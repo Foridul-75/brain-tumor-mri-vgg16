@@ -122,38 +122,6 @@ HorizontalFlip · Rotate ±10° · RandomScale ±10% · Brightness/Contrast ±10
 
 > 📌 *Replace these placeholder values with your actual run output from `cv_summary` and `test_result`.*
 
-### Cross-Validation Performance (5-Fold)
-
-| Metric | Mean ± Std | 95% Bootstrap CI |
-|--------|-----------|------------------|
-| Accuracy | 0.XXXX ± 0.XXXX | [0.XXXX, 0.XXXX] |
-| Macro F1 | 0.XXXX ± 0.XXXX | [0.XXXX, 0.XXXX] |
-| Macro AUC | 0.XXXX ± 0.XXXX | [0.XXXX, 0.XXXX] |
-| Cohen's Kappa | 0.XXXX ± 0.XXXX | [0.XXXX, 0.XXXX] |
-| MCC | 0.XXXX ± 0.XXXX | [0.XXXX, 0.XXXX] |
-
-### Held-Out Test Set Performance
-
-| Metric | Value | 95% CI |
-|--------|-------|--------|
-| Accuracy | 0.XXXX | [0.XXXX, 0.XXXX] |
-| Macro Precision | 0.XXXX | [0.XXXX, 0.XXXX] |
-| Macro Recall | 0.XXXX | [0.XXXX, 0.XXXX] |
-| Macro F1 | 0.XXXX | [0.XXXX, 0.XXXX] |
-| Macro AUC | 0.XXXX | [0.XXXX, 0.XXXX] |
-
-### Per-Class Clinical Metrics
-
-| Class | Sensitivity | Specificity | PPV | NPV |
-|-------|------------|------------|-----|-----|
-| Glioma | 0.XXXX | 0.XXXX | 0.XXXX | 0.XXXX |
-| Meningioma | 0.XXXX | 0.XXXX | 0.XXXX | 0.XXXX |
-| No Tumor | 0.XXXX | 0.XXXX | 0.XXXX | 0.XXXX |
-| Pituitary | 0.XXXX | 0.XXXX | 0.XXXX | 0.XXXX |
-
-The training pipeline automatically generates confusion matrices (raw + normalized), ROC curves, and per-fold loss/accuracy plots.
-
----
 
 ## 🔍 Explainable AI (XAI)
 
@@ -174,22 +142,8 @@ A per-class XAI grid is generated automatically for thesis figures.
 
 ---
 
-## 🚀 Getting Started
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/brain-tumor-mri-vgg16.git
-cd brain-tumor-mri-vgg16
-```
-
-### 2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-### 3. Prepare the dataset
+###  Prepare the dataset
 
 Download the Brain Tumor MRI Dataset and structure it as shown in [Dataset](#-dataset). Update the paths in the notebook config:
 
@@ -197,24 +151,6 @@ Download the Brain Tumor MRI Dataset and structure it as shown in [Dataset](#-da
 TRAIN_ROOT = "path/to/Brain_MRI_Images/Training"
 TEST_ROOT  = "path/to/Brain_MRI_Images/Testing"
 ```
-
-### 4. Train the model
-
-Run the training notebook end-to-end:
-
-```bash
-jupyter notebook VGG16_Dataset1_ColabReady.ipynb
-```
-
-Training takes approximately **2–3 hours on a single GPU** (T4 / V100 / A100 / RTX 3060+). The best fold's checkpoint is saved to `checkpoints_VGG16_Dataset1/`.
-
-### 5. Launch the live demo
-
-```bash
-streamlit run Brain_Tumor_MRI_APP.py
-```
-
-Then open [http://localhost:8501](http://localhost:8501), upload an MRI scan, and view the predicted class with confidence scores and Grad-CAM heatmap overlay.
 
 ---
 
@@ -231,17 +167,7 @@ brain-tumor-mri-vgg16/
 └── artifacts_VGG16_Dataset1/         # Test predictions for McNemar comparison
 ```
 
----
 
-## 🌐 Deployment
-
-The Streamlit demo app can be deployed for free on:
-
-- **[Streamlit Community Cloud](https://streamlit.io/cloud)** — connect your GitHub repo and deploy in one click
-- **[Hugging Face Spaces](https://huggingface.co/spaces)** — select Streamlit SDK
-- **Render / Railway / Fly.io** — for persistent hosting with a model file mounted
-
-> **Note:** Model checkpoint files are typically too large for direct GitHub commit. Use [Git LFS](https://git-lfs.com/) or host the `.pt` file on Hugging Face Hub / Google Drive and download it on app startup.
 
 ---
 
@@ -258,17 +184,6 @@ This pipeline was designed with the following research-quality principles:
 
 ---
 
-## 🔬 Cross-Model Statistical Comparison
-
-The pipeline includes a **McNemar exact test** helper for comparing two trained models on identical test predictions:
-
-```python
-mcnemar_compare_from_files("VGG16", "ResNet50")
-```
-
-This produces a contingency table and exact p-value, allowing rigorous "Is model A significantly better than model B?" claims for thesis chapters.
-
----
 
 ## 📖 Citation
 
@@ -296,11 +211,6 @@ Computer Science and Engineering — Daffodil International University (DIU)
 
 ---
 
-## 📜 License
-
-This project is released under the **MIT License**. See `LICENSE` for details.
-
----
 
 ## 🙏 Acknowledgments
 
